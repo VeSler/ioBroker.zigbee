@@ -281,8 +281,9 @@ class Zigbee extends utils.Adapter {
             const toAdd = {...definition};
             delete toAdd['homeassistant'];
             try {
-                zigbeeHerdsmanConverters.addDeviceDefinition(toAdd);
-            } catch {
+                zigbeeHerdsmanConverters.addDefinition(toAdd);
+            } catch (e){
+                this.log.error(`ERROR: \n&{e}`);
                 this.log.error(`unable to apply external converter ${JSON.stringify(toAdd)}`);
             }
         }
